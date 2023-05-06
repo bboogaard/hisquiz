@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Manage HisQuiz</title>
+<!-- Bootstrap CSS -->
+{{ bootstrap.load_css() }}
+</head>
+<body>
+
+<div class="d-flex justify-content-center">
+  <div class="row col-5">
+      <h2>Manage HisQuiz</h2>
+      <form method="post" action="{{ url_for('question_delete', question_id=question.question_id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <p>Delete question {{ question }}?</p>
+          <div class="clearfix">
+              <div class="float-start">
+                  <input type="submit" class="btn btn btn-danger" value="Delete">
+                  <a href="{{ url_for('question_list', question_id=question.question_id) }}" class="btn btn-secondary">Cancel</a>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+{{ bootstrap.load_js() }}
+</body>
+</html>

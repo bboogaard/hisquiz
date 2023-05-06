@@ -1,0 +1,40 @@
+{% from 'bootstrap5/form.html' import render_field %}
+<html>
+<head>
+    <title>Manage HisQuiz</title>
+<!-- Bootstrap CSS -->
+{{ bootstrap.load_css() }}
+</head>
+<body>
+
+<div class="d-flex justify-content-center">
+  <div class="row col-5">
+      <h2>Manage HisQuiz</h2>
+      <form method="post">
+          {{ form.csrf_token() }}
+          {{ render_field(form.chapter) }}
+          {{ render_field(form.route) }}
+          {{ render_field(form.image) }}
+          {{ render_field(form.question_number) }}
+          {{ render_field(form.title) }}
+          {{ render_field(form.answers, rows=3) }}
+          {{ render_field(form.answer) }}
+          <div class="clearfix">
+              <div class="float-start">
+              {{ render_field(form.submit) }}
+              <a href="{{ url_for('question_list') }}" class="btn btn-secondary">Cancel</a>
+              </div>
+              {% if can_delete %}
+              <div class="float-end">
+                  <a href="{{ url_for('question_delete', question_id=question.question_id) }}" class="btn btn btn-danger">Delete</a>
+              </div>
+              {% endif %}
+          </div>
+      </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+{{ bootstrap.load_js() }}
+</body>
+</html>

@@ -1,0 +1,422 @@
+[
+  {
+    "chapter": "Opstand en oorlog",
+    "route": "opstand-en-oorlog",
+    "image": "beeldenstorm.png",
+    "questionNumber": 1,
+    "title": "Welke gebeurtenis wordt beschouwd als het begin van de Tachtigjare Oorlog?",
+    "answers": [
+      "Aanbieding van het Smeekschrift der Edelen",
+      "De Slag bij Heiligerlee",
+      "Het Banedict van Filips II"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "c1401fa4-23e3-4e73-aa1b-a4ac29b8db51"
+  },
+  {
+    "chapter": "Opstand en oorlog",
+    "route": "opstand-en-oorlog",
+    "image": "beeldenstorm.png",
+    "questionNumber": 2,
+    "title": "Wat is de tegenhanger van de Unie van Utrecht?",
+    "answers": [
+      "De Unie van Atrecht",
+      "De Pacificatie van Gent",
+      "De Raad van Beroerten"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "49b78b25-2274-4242-88cd-e1a453a922b8"
+  },
+  {
+    "chapter": "Opstand en oorlog",
+    "route": "opstand-en-oorlog",
+    "image": "beeldenstorm.png",
+    "questionNumber": 3,
+    "title": "Van wanneer tot wanneer duurde het Twaalfjarig Bestand?",
+    "answers": [
+      "1609 - 1621",
+      "1651 - 1663",
+      "1702 - 1714"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "c1847981-81f1-4e4c-a68a-ee572722a2dd"
+  },
+  {
+    "chapter": "Opstand en oorlog",
+    "route": "opstand-en-oorlog",
+    "image": "beeldenstorm.png",
+    "questionNumber": 4,
+    "title": "In welk jaar werd de vrede van Münster gesloten?",
+    "answers": [
+      "1621",
+      "1647",
+      "1648"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "721e0686-6e1b-4a4b-a4ff-00c37b7a1c10"
+  },
+  {
+    "chapter": "De Gouden Eeuw",
+    "route": "de-gouden-eeuw",
+    "image": "nachtwacht.png",
+    "questionNumber": 5,
+    "title": "In welke stad woonde en werkte Johannes Vermeer?",
+    "answers": [
+      "Amsterdam",
+      "Leiden",
+      "Delft"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "70582011-083a-4de6-aa1d-c325a884084f"
+  },
+  {
+    "chapter": "De Gouden Eeuw",
+    "route": "de-gouden-eeuw",
+    "image": "nachtwacht.png",
+    "questionNumber": 6,
+    "title": "Hoe heette de wiskundige zoon van Constantijn Huygens?",
+    "answers": [
+      "Christiaan",
+      "Hugo",
+      "Simon"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "263c85fa-f819-4ea6-8ff3-e62421c4a07e"
+  },
+  {
+    "chapter": "De Gouden Eeuw",
+    "route": "de-gouden-eeuw",
+    "image": "nachtwacht.png",
+    "questionNumber": 7,
+    "title": "Wanneer begon het eerste stadhouderloze tijdperk?",
+    "answers": [
+      "1652",
+      "1688",
+      "1702"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "3ef2133f-8881-48fd-8ad7-0e9f50d8f2ec"
+  },
+  {
+    "chapter": "De Gouden Eeuw",
+    "route": "de-gouden-eeuw",
+    "image": "nachtwacht.png",
+    "questionNumber": 8,
+    "title": "Van welke landen werd Willem III koning in 1689?",
+    "answers": [
+      "Nederland, Engeland en Schotland",
+      "Engeland, Schotland en Wales",
+      "Engeland, Schotland en Ierland"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "7e2dba7d-0858-4683-9481-b12bbb0ff3e6"
+  },
+  {
+    "chapter": "Patriciërs en patriotten",
+    "route": "patriciers-en-patriotten",
+    "image": "patriotten.png",
+    "questionNumber": 9,
+    "title": "Met welk verdrag kwam er een einde aan de Spaanse Successie-oorlog?",
+    "answers": [
+      "De Vrede van Nijmegen",
+      "De Vrede van Utrecht",
+      "De Vrede van Rijswijk"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "bdc4aeb5-0583-453d-b97a-96ca1c27d036"
+  },
+  {
+    "chapter": "Patriciërs en patriotten",
+    "route": "patriciers-en-patriotten",
+    "image": "patriotten.png",
+    "questionNumber": 10,
+    "title": "Wie was de auteur van de Hollandse Spectator?",
+    "answers": [
+      "Justus van Effen",
+      "Justus van Maurik",
+      "Joseph Alberdingk Thijm"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "6158b6a1-5ab3-44ff-b713-0cd4e7813852"
+  },
+  {
+    "chapter": "Patriciërs en patriotten",
+    "route": "patriciers-en-patriotten",
+    "image": "patriotten.png",
+    "questionNumber": 11,
+    "title": "Wat was de bijnaam van de patriotten?",
+    "answers": [
+      "Geuzen",
+      "Kezen",
+      "Zwijnen"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "7e09e5c2-711f-453b-9c15-86b91ecab469"
+  },
+  {
+    "chapter": "Patriciërs en patriotten",
+    "route": "patriciers-en-patriotten",
+    "image": "patriotten.png",
+    "questionNumber": 12,
+    "title": "Wanneer werd de Bataafse Republiek gesticht?",
+    "answers": [
+      "1787",
+      "1795",
+      "1799"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "cf26adaf-6e0a-41de-82eb-ae50fa432c0a"
+  },
+  {
+    "chapter": "Restauratie en revoluties",
+    "route": "restauratie-en-revoluties",
+    "image": "waterloo.png",
+    "questionNumber": 13,
+    "title": "Waartoe riep Willem I zich uit in 1813?",
+    "answers": [
+      "Soeverein vorst der Nederlanden",
+      "Koning der Nederlanden",
+      "Stadhouder der Nederlanden"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "702668ec-26ee-4bc4-b8c6-761d830666fe"
+  },
+  {
+    "chapter": "Restauratie en revoluties",
+    "route": "restauratie-en-revoluties",
+    "image": "waterloo.png",
+    "questionNumber": 14,
+    "title": "Onder welke vorst werd in Nederland de ministeriële verantwoordelijkheid ingevoerd?",
+    "answers": [
+      "Willem I",
+      "Willem II",
+      "Willem III"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "011d98f1-960c-4800-b1f2-44e58610616c"
+  },
+  {
+    "chapter": "Restauratie en revoluties",
+    "route": "restauratie-en-revoluties",
+    "image": "waterloo.png",
+    "questionNumber": 15,
+    "title": "Welke socialistische voorman kwam in 1888 in de Tweede Kamer?",
+    "answers": [
+      "Troelstra",
+      "Drees",
+      "Domela Nieuwenhuis"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "0874ac26-c5a0-4e09-89c8-835d8af9354e"
+  },
+  {
+    "chapter": "Restauratie en revoluties",
+    "route": "restauratie-en-revoluties",
+    "image": "waterloo.png",
+    "questionNumber": 16,
+    "title": "Wanneer werd het algemeen kiesrecht voor mannen ingevoerd in Nederland?",
+    "answers": [
+      "1917",
+      "1919",
+      "1920"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "5c3480b3-6923-40c9-8a2b-1dbf9f320fef"
+  },
+  {
+    "chapter": "Interbellum",
+    "route": "interbellum",
+    "image": "colijn.png",
+    "questionNumber": 17,
+    "title": "In welk jaar vonden de Olympische spelen van Amsterdam plaats?",
+    "answers": [
+      "1924",
+      "1928",
+      "1932"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "75e4d533-c1cd-4d53-b9fc-2c2c9f31c49f"
+  },
+  {
+    "chapter": "Interbellum",
+    "route": "interbellum",
+    "image": "colijn.png",
+    "questionNumber": 18,
+    "title": "In welk jaar werd de Afsluitdijk geopend?",
+    "answers": [
+      "1930",
+      "1931",
+      "1932"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "c4d761fe-04d9-4d38-948a-44f0f6c625b7"
+  },
+  {
+    "chapter": "Interbellum",
+    "route": "interbellum",
+    "image": "colijn.png",
+    "questionNumber": 19,
+    "title": "Met hoeveel zetels kwam de NSB in 1937 in de Tweede Kamer?",
+    "answers": [
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "b77c28db-721e-4239-8018-b051a57bc55a"
+  },
+  {
+    "chapter": "Interbellum",
+    "route": "interbellum",
+    "image": "colijn.png",
+    "questionNumber": 20,
+    "title": "Wie was de oprichter van het tijdschrift De Stijl?",
+    "answers": [
+      "Theo van Doesburg",
+      "Martinus Nijhoff",
+      "Karel Appel"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "5949f0b1-0757-4eae-ad09-08244841d5d4"
+  },
+  {
+    "chapter": "Bezetting",
+    "route": "bezetting",
+    "image": "seyss.png",
+    "questionNumber": 21,
+    "title": "Welk monument is opgericht naar aanleiding van de Februaristaking?",
+    "answers": [
+      "De Dokwerker",
+      "Het Nationaal Monument op de Dam",
+      "Het Monument Voor Alle Gevallenen"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "c1636f33-053b-4c58-85a4-31c1e528d9dc"
+  },
+  {
+    "chapter": "Bezetting",
+    "route": "bezetting",
+    "image": "seyss.png",
+    "questionNumber": 22,
+    "title": "Wie was het grootste deel van de oorlog minister-president in balllingschap?",
+    "answers": [
+      "De Geer",
+      "Gerbrandy",
+      "Schermerhorn"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "d012bf43-d67c-4f65-a9eb-bf36b0cd4608"
+  },
+  {
+    "chapter": "Bezetting",
+    "route": "bezetting",
+    "image": "seyss.png",
+    "questionNumber": 23,
+    "title": "Welk radiostation zond vanaf 1944 uit vanuit Eindhoven?",
+    "answers": [
+      "Radio Oranje",
+      "Radio Vrij Nederland",
+      "Radio Herrijzend Nederland"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "d1cdb9ef-248d-4332-8a43-268d0fc97491"
+  },
+  {
+    "chapter": "Bezetting",
+    "route": "bezetting",
+    "image": "seyss.png",
+    "questionNumber": 24,
+    "title": "Wie van onderstaande personen behoorde NIET tot de 4/3/2 van Breda?",
+    "answers": [
+      "Rauter",
+      "Aus der Fünten",
+      "Fischer"
+    ],
+    "answer": 0,
+    "answered": null,
+    "questionId": "bbf7ed3b-bce2-420b-a066-4dfc7afd7dae"
+  },
+  {
+    "chapter": "Wederopbouw en welvaart",
+    "route": "wederopbouw-en-welvaart",
+    "image": "drees.png",
+    "questionNumber": 25,
+    "title": "In welk jaar werd de Algemene Bijstandswet ingevoerd?",
+    "answers": [
+      "1946",
+      "1965",
+      "1970"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "2b5e3a1f-642a-4a63-a37b-a7fead113c81"
+  },
+  {
+    "chapter": "Wederopbouw en welvaart",
+    "route": "wederopbouw-en-welvaart",
+    "image": "drees.png",
+    "questionNumber": 26,
+    "title": "Welke gebeurtenis leidde in 1966 tot de val van het kabinet Cals?",
+    "answers": [
+      "De muiterij op de Zeven Provinciën",
+      "De onafhankelijkheid van Nieuw-Guinea",
+      "De Nacht van Schmelzer"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "7e5265de-939f-442a-a7d5-817a52c34b15"
+  },
+  {
+    "chapter": "Wederopbouw en welvaart",
+    "route": "wederopbouw-en-welvaart",
+    "image": "drees.png",
+    "questionNumber": 27,
+    "title": "In welke politieke partij bevonden zich de zogenaamde loyalisten?",
+    "answers": [
+      "PvdA",
+      "CDA",
+      "VVD"
+    ],
+    "answer": 1,
+    "answered": null,
+    "questionId": "ddccc244-5ca1-493b-a325-dfae66df81e1"
+  },
+  {
+    "chapter": "Wederopbouw en welvaart",
+    "route": "wederopbouw-en-welvaart",
+    "image": "drees.png",
+    "questionNumber": 28,
+    "title": "In welk jaar werd het Verdrag van Maastricht ondertekend?",
+    "answers": [
+      "1990",
+      "1991",
+      "1992"
+    ],
+    "answer": 2,
+    "answered": null,
+    "questionId": "4238fec4-21e4-477a-8ac2-8ea75fd80a58"
+  }
+]

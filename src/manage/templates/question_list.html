@@ -1,0 +1,27 @@
+{% from 'bootstrap5/form.html' import render_form %}
+<html>
+<head>
+    <title>Manage HisQuiz</title>
+<!-- Bootstrap CSS -->
+{{ bootstrap.load_css() }}
+</head>
+<body>
+
+<div class="d-flex justify-content-center">
+  <div class="row col-5">
+      <h2>Manage HisQuiz</h2>
+      <ul class="list-unstyled">
+          {% for question in questions %}
+          <li><a href="{{ url_for('question_edit', question_id=question.question_id) }}">{{ question }}</a></li>
+          {% endfor %}
+      </ul>
+      <div class="text-end">
+          <a href="{{ url_for('question_add') }}" class="btn btn-primary">Add Question</a>
+      </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+{{ bootstrap.load_js() }}
+</body>
+</html>
