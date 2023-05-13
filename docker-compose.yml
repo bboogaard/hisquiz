@@ -13,12 +13,22 @@ services:
       - "80:80"
       
   flask:
+    container_name: flask
+    build:
+      context: .
+      dockerfile: ./src/flask/Dockerfile
+    command: python app.py --host=0.0.0.0:8000
+    volumes:
+      - ./src/flask:/code
+    ports:
+      - "8000:8000"
+      
+  manage:
     container_name: manage
     build:
       context: .
       dockerfile: ./src/manage/Dockerfile
-    command: python app.py --host=0.0.0.0:8000
     volumes:
-      - ./src/manage:/code
+      - "./src/manage:/usr/share/nginx/html"
     ports:
-      - "8000:8000"
+      - "9000:9000"

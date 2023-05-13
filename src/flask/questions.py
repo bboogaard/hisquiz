@@ -9,7 +9,7 @@ from camel_converter import dict_to_snake, dict_to_camel
 from dacite import from_dict
 
 import settings
-from forms import QuestionForm
+from schema import QuestionSchema
 
 
 class QuestionNotFound(Exception):
@@ -36,22 +36,23 @@ class Question:
         return settings.CHAPTERS.index(self.chapter) + 1
 
     @classmethod
-    def add_from_form(cls, form: QuestionForm):
-        return Question(**cls._kwargs_from_form(form))
+    def add_from_schema(cls, schema: QuestionSchema):
+        return Question(**cls._kwargs_from_schema(schema))
 
-    def save_from_form(self, form: QuestionForm):
-        return replace(self, **self._kwargs_from_form(form, question_id=self.question_id))
+    def save_from_schema(self, schema: QuestionSchema):
+        return replace(self, **self._kwargs_from_schema(schema, question_id=self.question_id))
 
     @staticmethod
-    def _kwargs_from_form(form: QuestionForm, question_id: str = None):
+    def _kwargs_from_schema(schema: QuestionSchema, question_id: str = None):
+        print(schema.deserialized['answers'])
         return dict(
-            chapter=form.chapter.data,
-            route=form.route.data,
-            image=form.image.data,
-            question_number=form.question_number.data,
-            title=form.title.data,
-            answers=list(map(lambda x: x.strip(), form.answers.data.split('\n')))[:3],
-            answer=form.answer.data,
+            chapter=schema.deserialized['chapter'],
+            route=schema.deserialized['route'],
+            image=schema.deserialized['image'],
+            question_number=schema.deserialized['question_number'],
+            title=schema.deserialized['title'],
+            answers=schema.deserialized['answers'],
+            answer=schema.deserialized['answer'],
             question_id=question_id if question_id else str(uuid.uuid4())
         )
 

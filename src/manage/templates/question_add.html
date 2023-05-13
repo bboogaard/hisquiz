@@ -3,12 +3,12 @@
 	  <strong>Server returned errors:</strong>
 	  <div id="alert"></div>
 	</div>
-	<input name="question_id" type="hidden" value="{{ question.question_id }}">
+	<input name="question_id" type="hidden" value="">
 	<div class="mb-3">
 		<label class="form-label" for="chapter">Chapter</label>
 		<select class="form-select" id="chapter" name="chapter">
 			{% for chapter in chapters %}
-			<option{{ " selected" if question.chapter == chapter else "" }} value="{{ chapter }}">{{ chapter }}</option>
+			<option value="{{ chapter }}">{{ chapter }}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -16,7 +16,7 @@
 		<label class="form-label" for="route">Route</label>
 		<select class="form-select" id="route" name="route">
 			{% for route in routes %}
-		    <option{{ " selected" if question.route == route else "" }} value="{{ route }}">{{ route }}</option>
+		    <option value="{{ route }}">{{ route }}</option>
 		   	{% endfor %}
 	    </select>
 	</div>
@@ -24,7 +24,7 @@
 		<label class="form-label" for="image">Image</label>
 		<select class="form-select" id="image" name="image">
 			{% for image in images %}
-			<option{{ " selected" if question.image == image else "" }} value="{{ image }}">{{ image }}</option>
+			<option value="{{ image }}">{{ image }}</option>
 			{% endfor %}	
 		</select>
 	</div>
@@ -38,25 +38,22 @@
 	</div>
 	<div class="mb-3 required">
 		<label class="form-label" for="answers">Answers</label>
-		{% for answer in question.answers %}
-		<input class="form-control" id="title" maxlength="100" minlength="1" name="answers" required="" type="text" value="{{ answer }}">
-		{% endfor %}
+		<input class="form-control" id="title" maxlength="100" minlength="1" name="answers" required="" type="text" value="">
+		<input class="form-control" id="title" maxlength="100" minlength="1" name="answers" required="" type="text" value="">
+		<input class="form-control" id="title" maxlength="100" minlength="1" name="answers" required="" type="text" value="">
 	</div>
 	<div class="mb-3">
 		<label class="form-label" for="answer">Answer</label>
 		<select class="form-select" id="answer" name="answer">
-			<option value="0"{{ " selected" if question.answer == 0 else "" }}>0</option>
-			<option value="1"{{ " selected" if question.answer == 1 else "" }}>1</option>
-			<option value="2"{{ " selected" if question.answer == 2 else "" }}>2</option>
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
 		</select>
 	</div>
 	<div class="clearfix">
 		<div class="float-start">
 			<a class="btn btn-primary btn-md" id="submit">Save</a>
 			<a href="/" class="btn btn-secondary">Cancel</a>
-		</div>
-		<div class="float-end">
-			<a href="/{{ question.question_id }}/delete" class="btn btn btn-danger">Delete</a>
 		</div>
 	</div>
 </form>

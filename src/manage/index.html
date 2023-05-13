@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Manage HisQuiz</title>
+  </head>
+  <body>
+
+    <div class="d-flex justify-content-center">
+      <div class="row col-5">
+          <h2>Manage HisQuiz</h2>
+          <form id="auth-form">
+            <p>Authenticate:</p>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="username">Username</label>
+              <input type="username" id="username" class="form-control" />
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="password">Password</label>
+              <input type="password" id="password" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mb-4">Authenticate</button>
+          </form>  
+          <div id="content" class="mb-4"></div>
+      </div>
+    </div>
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="http://127.0.0.1:9000/js/navigo.min.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9000/js/nunjucks.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9000/js/quiz.manage.js"></script>
+    <script type="text/javascript" src="http://127.0.0.1:9000/js/api.client.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+        let form = document.getElementById('auth-form');
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          let router = new Navigo('/');
+          nunjucks.configure('/templates', { autoescape: true });
+          let client = new ApiClient('http://127.0.0.1:8000/api/v1');
+          client.login(document.getElementById('username').value, document.getElementById('password').value);
+          let quizManage = new QuizManage(router, nunjucks, client);
+          quizManage.init();
+        });
+      });
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
