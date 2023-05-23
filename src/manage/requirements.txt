@@ -1,7 +1,0 @@
-bootstrap-flask==2.2.0
-flask-wtf==1.1.1
-dacite==1.8.0
-camel-converter==3.0.0
-python-environ==0.4.54
-pytest-flask==1.2.0
-Flask-WebTest==0.1.1

@@ -1,0 +1,10 @@
+<div class="input-group mb-3" id="chapter-{{ index }}">
+  <input type="text" class="form-control" maxlength="100" minlength="1" name="chapters" required="" type="text" value="">
+  <input type="text" class="form-control" maxlength="100" minlength="1" name="routes" required="" type="text" value="">
+  <select name="images" class="form-control" aria-describedby="chapter-{{ loop.index }}-addon">
+      {% for image in images %}
+      <option value="{{ image }}">{{ image }}</option>
+      {% endfor %}           	
+  </select>
+  <button class="btn btn-danger btn-sm" type="button" id="chapter-{{ index }}-addon" data-chapter="chapter-{{ index }}">Remove</button>
+</div>
