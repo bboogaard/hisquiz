@@ -1,53 +1,42 @@
 class Quiz {
 
-  constructor(questions, storage, router) {
-    this.questions = questions;
+  constructor(storage, router, client) {
     this.storage = storage;
     this.router = router;
+    this.client = client;
     this.elements = {};
     this.currentQuestion = null;
     this.chapters = [];
+    this.questions = [];
   }
 
   init() {
-    this.normalizeChapters();
-    this.normalizeQuestions();
-    this.loadAnswers();
+    let self = this;
 
-    this.setUpElements();
-    this.setUpRoutes();
-    this.setUpEventHandlers();
+    this.loadMeta( () => {
+      self.setUpElements();
+      self.setUpRoutes();
+      self.setUpEventHandlers();
+      self.loadAnswers();
 
-    this.resumeQuiz();
-    this.updateElements();
+      self.resumeQuiz();
+      self.updateElements();
 
-    this.router.resolve();
-  }
-
-  // Methods for normalizing data
-
-  normalizeChapters() {
-    let chapters = {}
-    this.questions.forEach((question, i) => {
-      if (chapters[question.route] === undefined) {
-        chapters[question.route] = {
-          chapter: question.chapter,
-          questions: []
-        }
-      }
-      chapters[question.route].questions.push(question.questionId);
+      self.router.resolve();
     });
-    this.chapters = [];
-    for (const route in chapters) {
-      let chapter = chapters[route];
-      chapter.route = route;
-      this.chapters.push(chapter);
-    }
   }
 
-  normalizeQuestions() {
-    this.questions.forEach((question, i) => {
-      question.questionIndex = i;
+  // Methods for loading meta data
+
+  loadMeta(onSuccess) {
+    let self = this;
+
+    this.client.getJson('/chapters').then( (res) => {
+      self.chapters = res.json;
+      self.client.getJson('/questions').then( (res) => {
+        self.questions = res.json;
+        onSuccess();
+      });
     });
   }
 
@@ -55,17 +44,18 @@ class Quiz {
 
   loadAnswers() {
     let self = this;
+    let savedQuestions = this.storage.load('questions', {});
 
-    let savedQuestions = this.storage.load('questions', []);  
-    savedQuestions.forEach((savedQuestion, i) => {
-      let question = self.findQuestion(savedQuestion.questionId);
-      if (question !== null) {
-        question.answered = savedQuestion.answered;
+    this.questions.forEach( (question) => {
+      if (savedQuestions[question.questionId] !== undefined) {
+        question.answered = savedQuestions[question.questionId];
       }
     });
   }
 
   resumeQuiz() {
+    let self = this;
+
     let progress = this.sumAttr((question) => {
       return question.answered !== null;
     });
@@ -74,9 +64,12 @@ class Quiz {
     }
     else {
       let questionId = this.storage.load('questionId', null);
-      this.currentQuestion = questionId ? this.findQuestion(questionId) : null;
-      if (this.currentQuestion !== null) {
-        this.router.navigate(this.currentQuestion.route);
+      if (questionId) {
+        setTimeout( () => {
+          this.findQuestion({questionId: questionId}, (question) => {
+            self.loadQuestion(question);
+          })
+        }, 500);
       }
     }
   }
@@ -84,7 +77,7 @@ class Quiz {
   // Update prototype attributes during the app cycle
 
   clearQuestions() {
-    this.questions.forEach((question, i) => {
+    this.questions.forEach((question) => {
       question.answered = null;
     });
     this.deleteQuestions();
@@ -97,7 +90,12 @@ class Quiz {
   }
 
   saveAnswer(answered) {
-    this.currentQuestion.answered = answered;
+    let self = this;
+
+    let question = this.getQuestion(this.currentQuestion.questionId);
+    if (question) {
+      question.answered = answered;
+    }
     this.toggleAnswers(false);
   }
 
@@ -140,10 +138,10 @@ class Quiz {
 
     this.chapters.forEach((chapter) => {
       self.router.on(chapter.route, () => {
-        let question = self.currentQuestion !== null ? self.currentQuestion : self.findQuestion(chapter.questions[0]);
-        if (question !== null) {
-            self.loadQuestion(question.questionIndex);
-        }
+        let query = self.currentQuestion !== null ? {questionId: self.currentQuestion.questionId} : {"chapter.chapter": chapter.chapter};
+        self.findQuestion(query, (question) => {
+          self.loadQuestion(question);
+        })
       }); 
     });
   }
@@ -163,7 +161,7 @@ class Quiz {
     }
     this.elements.start.addEventListener("click", (event) => {
       event.preventDefault();
-      self.goToQuestion(0, () => {
+      self.goToQuestion({"chapter.chapter": self.chapters[0].chapter}, () => {
         self.toggleForm(true);
         self.toggleNav(self.elements.start, false, true);
       });
@@ -183,10 +181,10 @@ class Quiz {
       self.router.navigate('/');
     });
     this.elements.prev.addEventListener("click", (event) => {
-      self.goToQuestion(self.currentQuestion.questionIndex - 1);
+      self.goToQuestion({questionId: self.currentQuestion.meta.prevQuestion});
     });
     this.elements.next.addEventListener("click", (event) => {
-      self.goToQuestion(self.currentQuestion.questionIndex + 1);
+      self.goToQuestion({questionId: self.currentQuestion.meta.nextQuestion});
     });
   }
 
@@ -229,12 +227,12 @@ class Quiz {
   }
 
   saveQuestions() {
-    this.storage.save('questions', this.questions.map((question, i) => {
-      return {
-        questionId: question.questionId,
-        answered: question.answered
-      }
-    }));
+    let savedQuestions = {};
+
+    this.questions.forEach( (question) => {
+      savedQuestions[question.questionId] = question.answered;
+    });
+    this.storage.save('questions', savedQuestions);
   }
 
   deleteQuestions() {
@@ -243,13 +241,13 @@ class Quiz {
 
   // Load the current question
     
-  loadQuestion(questionIndex) {
-    this.currentQuestion = this.questions[questionIndex];
-    this.toggleButton(this.elements.prev, this.currentQuestion.questionIndex > 0);
-    this.toggleButton(this.elements.next, this.currentQuestion.questionIndex < this.questions.length - 1);
+  loadQuestion(question) {
+    this.currentQuestion = question;
+    this.toggleButton(this.elements.prev, this.currentQuestion.meta.prevQuestion !== null);
+    this.toggleButton(this.elements.next, this.currentQuestion.meta.nextQuestion !== null);
     
-    this.elements.chapterTitle.innerHTML = this.currentQuestion.chapter;
-    this.elements.chapterImage.src = "images/" + this.currentQuestion.image;
+    this.elements.chapterTitle.innerHTML = this.currentQuestion.chapter.chapter;
+    this.elements.chapterImage.src = this.currentQuestion.chapter.image.url;
     this.elements.questionTitle.innerHTML = this.currentQuestion.questionNumber + ". " + this.currentQuestion.title;
     
     let labelIndex = 0;
@@ -257,35 +255,58 @@ class Quiz {
       label.innerHTML = this.currentQuestion.answers[labelIndex++];
     }
     let answerIndex = 0;
+    let answered = this.getAnswer(this.currentQuestion.questionId);
     for (let answer of this.elements.answers) {
       answer.checked = false;
-      if (this.currentQuestion.answered === answerIndex++) {
+      if (answered === answerIndex++) {
         answer.checked = true;
         break;
       }
     }
-    this.toggleAnswers(this.currentQuestion.answered === null);
+    this.toggleAnswers(answered === null);
     this.saveQuestion();
   }
 
   // Miscellaneous helpers
-     
 
-  findQuestion(questionId) {
-    for (let question of this.questions) {
-      if (question.questionId === questionId) {
-        return question;
-      }
-    }
-    return null;
+  getQuestion(questionId) {
+    let self = this;
+
+    let questions = this.questions.filter( (question) => {
+      return question.questionId === questionId;
+    });
+    return questions.length ? questions[0] : null;
   }
 
-  goToQuestion(questionIndex, callback) {
-    this.loadQuestion(questionIndex);
-    this.router.navigate(this.currentQuestion.route);
-    if (callback) {
-      callback();
-    }
+  getAnswer(questionId) {
+    let self = this;
+
+    let question = this.getQuestion(questionId);
+    return question ? question.answered : null;
+  }
+     
+
+  findQuestion(query, onSuccess) {
+    let self = this;
+
+    this.client.getJson('/questions/find', query).then( (res) => {
+      if (res.ok) {
+        onSuccess(res.json);
+      }
+    });
+  }
+
+  goToQuestion(query, callback) {
+    let self = this;
+
+    this.findQuestion(query, (question) => {
+      self.loadQuestion(question);
+      self.router.navigate(self.currentQuestion.chapter.route);
+      if (callback) {
+        callback();
+      }
+    });
+    
   }
 
 
@@ -346,7 +367,7 @@ class Quiz {
 
   sumAttr(condition) {
     let result = 0;
-    this.questions.forEach((question, i) => {
+    this.questions.forEach( (question) => {
       if (condition(question)) {
         result += 1;
       }

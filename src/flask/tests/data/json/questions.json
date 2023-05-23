@@ -1,8 +1,6 @@
 [
   {
     "chapter": "Opstand en oorlog",
-    "route": "opstand-en-oorlog",
-    "image": "beeldenstorm.png",
     "questionNumber": 1,
     "title": "Welke gebeurtenis wordt beschouwd als het begin van de Tachtigjare Oorlog?",
     "answers": [
@@ -16,9 +14,7 @@
   },
   {
     "chapter": "De Gouden Eeuw",
-    "route": "de-gouden-eeuw",
-    "image": "nachtwacht.png",
-    "questionNumber": 3,
+    "questionNumber": 2,
     "title": "In welke stad woonde en werkte Johannes Vermeer?",
     "answers": [
       "Amsterdam",

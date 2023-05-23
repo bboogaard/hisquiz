@@ -8,24 +8,8 @@
 		<label class="form-label" for="chapter">Chapter</label>
 		<select class="form-select" id="chapter" name="chapter">
 			{% for chapter in chapters %}
-			<option value="{{ chapter }}">{{ chapter }}</option>
+			<option value="{{ chapter.chapter }}">{{ chapter.chapter }}</option>
 			{% endfor %}
-		</select>
-	</div>
-	<div class="mb-3">
-		<label class="form-label" for="route">Route</label>
-		<select class="form-select" id="route" name="route">
-			{% for route in routes %}
-		    <option value="{{ route }}">{{ route }}</option>
-		   	{% endfor %}
-	    </select>
-	</div>
-	<div class="mb-3">
-		<label class="form-label" for="image">Image</label>
-		<select class="form-select" id="image" name="image">
-			{% for image in images %}
-			<option value="{{ image }}">{{ image }}</option>
-			{% endfor %}	
 		</select>
 	</div>
 	<div class="mb-3 required">

@@ -49,7 +49,7 @@
           event.preventDefault();
           let router = new Navigo('/');
           nunjucks.configure('/templates', { autoescape: true });
-          let client = new ApiClient('http://127.0.0.1:8000/api/v1');
+          let client = new ApiClient('http://127.0.0.1:8000/api/v1/manage');
           client.login(document.getElementById('username').value, document.getElementById('password').value);
           let quizManage = new QuizManage(router, nunjucks, client);
           quizManage.init();

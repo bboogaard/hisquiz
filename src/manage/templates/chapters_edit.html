@@ -1,0 +1,37 @@
+<form id="chapters-form">
+	<div class="alert alert-danger fade show" role="alert" id="alert-container" style="display: none;">
+	  <strong>Server returned errors:</strong>
+	  <div id="alert"></div>
+	</div>
+	<div class="mb-3 required" id="chapter-container">
+		<div class="input-group mb-3">
+			<label class="form-control" style="border: 0px; font-weight: bold;">Chapter</label>
+			<label class="form-control" style="border: 0px; font-weight: bold;">Route</label>
+			<label class="form-control" style="border: 0px; font-weight: bold;">Image</label>
+			<button class="btn btn-danger btn-sm" type="button" style="visibility: hidden">Remove</button>
+		</div>	
+		{% for chapter in chapters %}
+		<div class="input-group mb-3" id="chapter-{{ loop.index }}">
+		  <input type="text" class="form-control" maxlength="100" minlength="1" name="chapters" required="" type="text" value="{{ chapter.chapter }}">
+		  <input type="text" class="form-control" maxlength="100" minlength="1" name="routes" required="" type="text" value="{{ chapter.route }}">
+		  <select name="images" class="form-control" aria-describedby="chapter-{{ loop.index }}-addon">
+		      {% for image in images %}
+		      <option value="{{ image }}"{{ " selected" if chapter.image == image else "" }}>{{ image }}</option>
+		      {% endfor %}           	
+		  </select>
+		  <button class="btn btn-danger btn-sm" type="button" id="chapter-{{ loop.index }}-addon" data-chapter="chapter-{{ loop.index }}">Remove</button>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="clearfix mb-3">
+		<div class="float-start">
+			<a class="btn btn-primary btn-md" id="add-chapter">Add chapter</a>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="float-start">
+			<a class="btn btn-primary btn-md" id="submit">Save</a>
+			<a href="/" class="btn btn-secondary">Cancel</a>
+		</div>
+	</div>
+</form>

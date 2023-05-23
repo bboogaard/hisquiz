@@ -20,6 +20,7 @@ services:
     command: python app.py --host=0.0.0.0:8000
     volumes:
       - ./src/flask:/code
+      - ./src/flask/data:/data
     ports:
       - "8000:8000"
       
